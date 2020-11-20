@@ -73,16 +73,5 @@ public class SFXManager : MonoBehaviour
             
         }
     }
-    private void Update()
-    {
-        if (GameManager.SI.currentGameState != GameState.InGame) return;
 
-        if (!PlayerInput.SI.IsJumping)
-        {
-            PlaySound(Sound.deslizar);
-        }
-        else{
-            deslizar.Stop();
-        }
-    }
 }

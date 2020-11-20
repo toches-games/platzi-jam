@@ -90,8 +90,8 @@ public class UIManager : MonoBehaviour
         }
 
         HideCountDown();
-        GameManager.SI.ChangeGameState(GameState.InGame);
-        PhaseManager.SI.Pause(false);
+        //GameManager.SI.ChangeGameState(GameState.InGame);
+        //PhaseManager.SI.Pause(false);
     }
 
     public void LoseLife()
@@ -123,9 +123,9 @@ public class UIManager : MonoBehaviour
         {
             ActiveLifes();
             _gameOver.SetActive(false);
-            GameManager.SI.ChangeGameState(GameState.InGame);
-            PlayerStats.SI.Respawn();
-            PatternManager.SI.remainingPattern = PhaseManager.SI.GetCurrentPhase();
+            //GameManager.SI.ChangeGameState(GameState.InGame);
+            //PlayerStats.SI.Respawn();
+            //PatternManager.SI.remainingPattern = PhaseManager.SI.GetCurrentPhase();
         }
 
     }
@@ -137,7 +137,7 @@ public class UIManager : MonoBehaviour
 
     public void InitGame()
     {
-        GameManager.SI.ChangeGameState(GameState.InGame);
+        //GameManager.SI.ChangeGameState(GameState.InGame);
 
     }
 
@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
             time -= Time.deltaTime;
         }
 
-        GameManager.SI.ChangeGameState(GameState.InGame);
+        //GameManager.SI.ChangeGameState(GameState.InGame);
     }
 
     public void PlayTimeLineWin()
