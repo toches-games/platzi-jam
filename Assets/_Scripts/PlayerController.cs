@@ -12,17 +12,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallChecker = default;
     [SerializeField] private float wallCheckerDistance = 1f;
 
-
     private Rigidbody2D rig;
     private float movementDirection;
     private bool isFacingRight = true;
     private bool jumpInput;
+    private float currentSpeed;
+    // for smoothdamp
+    private float currentVelocity;
 
     private bool isWalking;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
-
 
     private void Awake()
     {
@@ -41,12 +42,26 @@ public class PlayerController : MonoBehaviour
         Jump();
         UpdateAnimations();
         CheckWallSliding();
+        CheckWalking();
     }
 
     private void FixedUpdate()
     {
         Movement();
         CheckState();
+    }
+
+    private void CheckWalking()
+    {
+        if (movementDirection != 0)
+        {
+            isWalking = true;
+        }
+
+        else
+        {
+            isWalking = false;
+        }
     }
 
     private void CheckWallSliding()
@@ -90,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
         else if(jumpInput && isWallSliding)
         {
-            if(isFacingRight && movementDirection < 0 || !isFacingRight && movementDirection > 0)
+            //if(isFacingRight && movementDirection < 0 || !isFacingRight && movementDirection > 0)
             {
                 rig.velocity = new Vector2(movementDirection, 1f) * jumpSpeed;
             }
@@ -128,18 +143,20 @@ public class PlayerController : MonoBehaviour
 
         else if(!isGrounded && !isWallSliding && movementDirection != 0)
         {
-            rig.velocity = new Vector2(movementSpeed * 0.80f * movementDirection, rig.velocity.y);
+            rig.velocity = new Vector2(currentSpeed * 0.80f, rig.velocity.y);
         }
 
         else 
         {
-            rig.velocity = new Vector2(movementDirection * movementSpeed, rig.velocity.y);
+            rig.velocity = new Vector2(currentSpeed, rig.velocity.y);
         }
     }
 
     private void CheckInput()
     {
         movementDirection = Input.GetAxisRaw("Horizontal");
-        jumpInput = Input.GetButtonDown("Jump");
+        jumpInput = Input.GetButtonDown("Jump") || Input.GetKey(KeyCode.UpArrow);
+
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, movementSpeed * movementDirection, ref currentVelocity, 0.1f);
     }
 }
