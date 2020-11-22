@@ -1,0 +1,380 @@
+fileFormatVersion: 2
+guid: f8324f09d33282940a0e568c1cc6cd21
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2354077946248774792
+    second: Moviendo-se_strip4_0
+  - first:
+      213: 6761503793786754292
+    second: Moviendo-se_strip4_1
+  - first:
+      213: 4713108598742449570
+    second: Moviendo-se_strip4_2
+  - first:
+      213: -7144772818763393319
+    second: Moviendo-se_strip4_3
+  - first:
+      213: 658386777680887614
+    second: Moviendo-se_strip4_4
+  - first:
+      213: 2935424525233090721
+    second: Moviendo-se_strip4_5
+  - first:
+      213: -165976935664137842
+    second: Moviendo-se_strip4_6
+  - first:
+      213: -2212136163067398505
+    second: Moviendo-se_strip4_7
+  - first:
+      213: 7151351476724360445
+    second: Moviendo-se_strip4_8
+  - first:
+      213: 564962731094527854
+    second: Moviendo-se_strip4_9
+  - first:
+      213: 5296510726671936748
+    second: Moviendo-se_strip4_10
+  - first:
+      213: 8100194463151688940
+    second: Moviendo-se_strip4_11
+  - first:
+      213: -2093933491755483637
+    second: Moviendo-se_strip4_12
+  - first:
+      213: -7587440673775224411
+    second: Moviendo-se_strip4_13
+  - first:
+      213: -7456979830866975357
+    second: Moviendo-se_strip4_14
+  - first:
+      213: -58415485817579566
+    second: Moviendo-se_strip4_15
+  - first:
+      213: 1721369131797739808
+    second: Moviendo-se_strip4_16
+  - first:
+      213: -7090868324846185802
+    second: Moviendo-se_strip4_17
+  - first:
+      213: -4178526795596146901
+    second: Moviendo-se_strip4_18
+  - first:
+      213: -3674874269131411529
+    second: Moviendo-se_strip4_19
+  - first:
+      213: 39859063015648169
+    second: Moviendo-se_strip4_20
+  - first:
+      213: 3293942205118387910
+    second: Moviendo-se_strip4_21
+  - first:
+      213: -1103318741331556173
+    second: Moviendo-se_strip4_22
+  - first:
+      213: -4839225954484431438
+    second: Moviendo-se_strip4_23
+  - first:
+      213: -7887916431559420575
+    second: Moviendo-se_strip4_24
+  - first:
+      213: -3351346890965862030
+    second: Moviendo-se_strip4_25
+  - first:
+      213: 8427964564363581811
+    second: Moviendo-se_strip4_26
+  - first:
+      213: 321285339380138274
+    second: Moviendo-se_strip4_27
+  - first:
+      213: 2895016264054773992
+    second: Moviendo-se_strip4_28
+  - first:
+      213: -6975785960013093640
+    second: Moviendo-se_strip4_29
+  - first:
+      213: 2039619959247322467
+    second: Moviendo-se_strip4_30
+  - first:
+      213: -6255042607407579826
+    second: Moviendo-se_strip4_31
+  - first:
+      213: -894032658693109147
+    second: Moviendo-se_strip4_32
+  - first:
+      213: -7182502854042946434
+    second: Moviendo-se_strip4_33
+  - first:
+      213: 3613625727343081807
+    second: Moviendo-se_strip4_34
+  - first:
+      213: -591907706603841364
+    second: Moviendo-se_strip4_35
+  - first:
+      213: 3247239811973619538
+    second: Moviendo-se_strip4_36
+  - first:
+      213: 4811885566375163891
+    second: Moviendo-se_strip4_37
+  - first:
+      213: 2594888013436335078
+    second: Moviendo-se_strip4_38
+  - first:
+      213: -7020195022736855348
+    second: Moviendo-se_strip4_39
+  - first:
+      213: -3585136599100293579
+    second: Moviendo-se_strip4_40
+  - first:
+      213: 7390774916853038016
+    second: Moviendo-se_strip4_41
+  - first:
+      213: -2313139423293669518
+    second: Moviendo-se_strip4_42
+  - first:
+      213: -189751613159956958
+    second: Moviendo-se_strip4_43
+  - first:
+      213: -16828970926639459
+    second: Moviendo-se_strip4_44
+  - first:
+      213: -7151220423009515640
+    second: Moviendo-se_strip4_45
+  - first:
+      213: 9148118196433265709
+    second: Moviendo-se_strip4_46
+  - first:
+      213: 1423049883004966331
+    second: Moviendo-se_strip4_47
+  - first:
+      213: 8415062549467192314
+    second: Moviendo-se_strip4_48
+  - first:
+      213: -1060420571157622332
+    second: Moviendo-se_strip4_49
+  - first:
+      213: 7469947873971890946
+    second: Moviendo-se_strip4_50
+  - first:
+      213: -2965436924027801608
+    second: Moviendo-se_strip4_51
+  - first:
+      213: 7501713148910110158
+    second: Moviendo-se_strip4_0
+  - first:
+      213: -5840270033374436783
+    second: Moviendo-se_strip4_1
+  - first:
+      213: -4165980487370434404
+    second: Moviendo-se_strip4_2
+  - first:
+      213: -2158263807952044509
+    second: Moviendo-se_strip4_3
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Moviendo-se_strip4_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 4
+        width: 436
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec50aa7fc507b1860800000000000000
+      internalID: 7501713148910110158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moviendo-se_strip4_1
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 5
+        width: 435
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 152ab54095133fea0800000000000000
+      internalID: -5840270033374436783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moviendo-se_strip4_2
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 2
+        width: 455
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c98931da1d67f26c0800000000000000
+      internalID: -4165980487370434404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moviendo-se_strip4_3
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 0
+        width: 411
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ebf6b608e4c02e0800000000000000
+      internalID: -2158263807952044509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 450ec8ddf0802ef449a26f875a40d7e7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
