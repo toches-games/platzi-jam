@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class RotateMap : MonoBehaviour
 {
+    public static RotateMap Instance;
+    public int CurrentRotationCount { private get; set; }
+
     [SerializeField] private float initialRotationSpeed = 1f;
     [SerializeField] private float rotateTime = 5f;
     [SerializeField] private float rotateDurationTime = 1f;
     [SerializeField] private int rotationDegrees = 90;
+    [SerializeField] private int dizzyRotationCount = 3;
+    [SerializeField] Transform mintPositions = default;
+    [SerializeField] private Transform mint = default;
 
     private Rigidbody2D rig;
     private float currentSpeed;
@@ -17,6 +23,13 @@ public class RotateMap : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -29,6 +42,14 @@ public class RotateMap : MonoBehaviour
             direction = directions[Random.Range(0, directions.Length)];
             targetSpeed = (rig.rotation + rotationDegrees - rig.rotation) * rotateDurationTime * direction;
             yield return new WaitForSeconds(rotateDurationTime);
+            CurrentRotationCount++;
+
+            if(CurrentRotationCount >= dizzyRotationCount && PlayerController.SI.State == PlayerState.Normal)
+            {
+                mint.position = mintPositions.GetChild(Random.Range(0, mintPositions.childCount)).position;
+                mint.gameObject.SetActive(true);
+                PlayerController.SI.State = PlayerState.Dizzy;
+            }
         }
     }
 

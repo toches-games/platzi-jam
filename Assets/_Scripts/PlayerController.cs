@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+public enum PlayerState
+{
+    Dizzy,
+    Normal
+}
+
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController SI;
@@ -15,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallCheckerDistance = 1f;
 
     private Rigidbody2D rig;
+    private Animator anim;
     private float movementDirection;
     private bool isFacingRight = true;
     private bool jumpInput;
@@ -28,17 +35,20 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
 
     public bool IsUnestablePlatform { get; private set; }
+    public PlayerState State { get; set; }
 
     private void Awake()
     {
         SI = SI == null ? this : SI;
 
         rig = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
         Physics2D.gravity = Vector2.down * gravity;
+        State = PlayerState.Normal;
     }
 
     private void Update()
@@ -102,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimations()
     {
-
+        anim.SetBool("Is Dizzy", State == PlayerState.Dizzy);
     }
 
     private void Jump()
@@ -167,5 +177,21 @@ public class PlayerController : MonoBehaviour
         jumpInput = Input.GetButtonDown("Jump") || Input.GetKey(KeyCode.UpArrow);
 
         currentSpeed = Mathf.SmoothDamp(currentSpeed, movementSpeed * movementDirection, ref currentVelocity, 0.1f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Mint"))
+        {
+            collision.gameObject.SetActive(false);
+
+            ResetState();
+        }
+    }
+
+    private void ResetState()
+    {
+        State = PlayerState.Normal;
+        RotateMap.Instance.CurrentRotationCount = 0;
     }
 }
