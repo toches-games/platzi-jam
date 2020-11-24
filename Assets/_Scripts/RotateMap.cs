@@ -11,7 +11,7 @@ public class RotateMap : MonoBehaviour
     [SerializeField] private float rotateDurationTime = 1f;
     [SerializeField] private int rotationDegrees = 90;
     [SerializeField] private int dizzyRotationCount = 3;
-    [SerializeField] Transform mintPositions = default;
+    //[SerializeField] Transform mintPositions = default;
     [SerializeField] private Transform mint = default;
 
     private Rigidbody2D rig;
@@ -46,13 +46,17 @@ public class RotateMap : MonoBehaviour
             }
             targetSpeed = (rig.rotation + rotationDegrees - rig.rotation) * rotateDurationTime * direction;
             yield return new WaitForSeconds(rotateDurationTime);
-            CurrentRotationCount++;
 
-            if(CurrentRotationCount >= dizzyRotationCount && PlayerController.SI.State == PlayerState.Normal)
+            if(PlayerController.SI.State == PlayerState.Normal)
             {
-                mint.position = mintPositions.GetChild(Random.Range(0, mintPositions.childCount)).position;
-                mint.gameObject.SetActive(true);
-                PlayerController.SI.State = PlayerState.Dizzy;
+                CurrentRotationCount++;
+
+                if(CurrentRotationCount >= dizzyRotationCount)
+                {
+                    //mint.position = mintPositions.GetChild(Random.Range(0, mintPositions.childCount)).position;
+                    mint.gameObject.SetActive(true);
+                    PlayerController.SI.State = PlayerState.Dizzy;
+                }
             }
         }
     }
