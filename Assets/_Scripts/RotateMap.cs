@@ -23,7 +23,7 @@ public class RotateMap : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (true)
+        while (GameManager.SI.currentGameState == GameState.InGame)
         {
             targetSpeed = initialRotationSpeed;
             yield return new WaitForSeconds(rotateTime);
@@ -38,11 +38,19 @@ public class RotateMap : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref currentVelocity, 0.5f);
     }
 
     private void FixedUpdate()
     {
+        if(GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
         rig.MoveRotation(rig.rotation - currentSpeed * Time.deltaTime);
     }
 }
