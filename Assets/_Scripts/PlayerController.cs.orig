@@ -34,12 +34,9 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
 
-<<<<<<< HEAD
-=======
     public bool IsUnestablePlatform { get; private set; }
     public PlayerState State { get; set; }
 
->>>>>>> player-movement
     private void Awake()
     {
         SI = SI == null ? this : SI;

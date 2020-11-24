@@ -36,8 +36,10 @@ public class RotateMap : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.SI.currentGameState == GameState.InGame)
+        while (true)
         {
+            yield return new WaitUntil(() => GameManager.SI.currentGameState == GameState.InGame);
+
             targetSpeed = initialRotationSpeed;
             yield return new WaitForSeconds(rotateTime);
             if (randomDirection)

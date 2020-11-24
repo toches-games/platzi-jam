@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 
 public enum PlayerState
 {
@@ -52,6 +53,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
         CheckInput();
         CheckMovementDirection();
         Jump();
@@ -62,6 +67,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
         Movement();
         CheckState();
     }
@@ -111,6 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimations()
     {
+
         anim.SetBool("Is Dizzy", State == PlayerState.Dizzy);
     }
 
@@ -195,6 +205,11 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
 
             ResetState();
+        }
+
+        if (collision.CompareTag("NextRoom"))
+        {
+            GameObject.Find("TimeLineNextRoom").GetComponent<PlayableDirector>().Play();
         }
     }
 
