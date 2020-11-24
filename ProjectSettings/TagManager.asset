@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeadZone
   - NextRoom
+  - Mint
   layers:
   - Default
   - TransparentFX
