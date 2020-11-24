@@ -34,8 +34,12 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
 
+<<<<<<< HEAD
+=======
     public bool IsUnestablePlatform { get; private set; }
     public PlayerState State { get; set; }
+
+>>>>>>> player-movement
     private void Awake()
     {
         SI = SI == null ? this : SI;
@@ -104,9 +108,6 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer);
         isTouchingWall = Physics2D.Raycast(wallChecker.position, transform.right, wallCheckerDistance, groundLayer);
-
-        //IsUnestablePlatform = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer)
-                    //.CompareTag("UnestablePlatform");
     }
 
     private void UpdateAnimations()
@@ -132,12 +133,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckMovementDirection()
     {
-        if (State == PlayerState.Dizzy)
-        {
-            movementDirection *= -1f;
-        }
-
-        if (isFacingRight && movementDirection < 0)
+        if(isFacingRight && movementDirection < 0)
         {
             Flip();
         }
@@ -179,11 +175,6 @@ public class PlayerController : MonoBehaviour
     {
         movementDirection = Input.GetAxisRaw("Horizontal");
         jumpInput = Input.GetButtonDown("Jump") || Input.GetKey(KeyCode.UpArrow);
-
-        if (State == PlayerState.Dizzy)
-        {
-            movementDirection *= -1f;
-        }
 
         currentSpeed = Mathf.SmoothDamp(currentSpeed, movementSpeed * movementDirection, ref currentVelocity, 0.1f);
     }
