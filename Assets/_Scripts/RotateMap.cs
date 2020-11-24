@@ -13,7 +13,8 @@ public class RotateMap : MonoBehaviour
     private float targetSpeed;
     private float currentVelocity;
     private int[] directions = { -1, 1 };
-    private int direction;
+    [SerializeField] private int direction;
+    [SerializeField] bool randomDirection;
 
     private void Awake()
     {
@@ -26,7 +27,10 @@ public class RotateMap : MonoBehaviour
         {
             targetSpeed = initialRotationSpeed;
             yield return new WaitForSeconds(rotateTime);
-            direction = directions[Random.Range(0, directions.Length)];
+            if (randomDirection)
+            {
+                direction = directions[Random.Range(0, directions.Length)];
+            }
             targetSpeed = (rig.rotation + rotationDegrees - rig.rotation) * rotateDurationTime * direction;
             yield return new WaitForSeconds(rotateDurationTime);
         }

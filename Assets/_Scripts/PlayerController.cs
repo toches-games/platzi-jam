@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
 
-    public bool IsUnestablePlatform { get; private set; }
-
     private void Awake()
     {
         SI = SI == null ? this : SI;
@@ -95,9 +93,6 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer);
         isTouchingWall = Physics2D.Raycast(wallChecker.position, transform.right, wallCheckerDistance, groundLayer);
-
-        //IsUnestablePlatform = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer)
-                    //.CompareTag("UnestablePlatform");
     }
 
     private void UpdateAnimations()

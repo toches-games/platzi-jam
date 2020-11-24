@@ -112,14 +112,12 @@ public class UnstablePlatform : MonoBehaviour
     {
         Color tmp = sRenderer.color;
         SpriteRenderer sRendererParent = GetComponentInParent<SpriteRenderer>();
-        Color tmp2 = sRendererParent.color;
 
         while(tmp.a > 0)
         {
             tmp.a -= 0.008f;
-            tmp2.a -= 0.008f;
             sRenderer.color = tmp;
-            sRendererParent.color = tmp2;
+            sRendererParent.color = tmp;
 
             yield return new WaitForEndOfFrame();
         }
