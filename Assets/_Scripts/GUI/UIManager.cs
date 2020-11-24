@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private List<Image> _lifesImages;
 
-    [SerializeField] private Text _countDownText;
+    [SerializeField] private TextMeshProUGUI _countDownText;
 
     [SerializeField] private GameObject _countDownContainer;
 
@@ -55,6 +56,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _initialLifesImages = new List<Image>(_lifesImages);
+
+        ShowCountDown(0);
     }
 
     public void ShowPauseMenu()
@@ -86,14 +89,14 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator PlayCountDown(int start)
     {
-        for (int i = start; i > 0; i--)
+        for (int i = start; true; i++)
         {
-            _countDownText.text = i.ToString();
+            _countDownText.text = TimeSpan.FromSeconds(i).ToString();
 
             yield return new WaitForSeconds(1f);
         }
 
-        HideCountDown();
+        //HideCountDown();
         //GameManager.SI.ChangeGameState(GameState.InGame);
         //PhaseManager.SI.Pause(false);
     }

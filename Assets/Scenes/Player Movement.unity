@@ -7748,8 +7748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifesImages: []
-  _countDownText: {fileID: 0}
-  _countDownContainer: {fileID: 0}
+  _countDownText: {fileID: 439032081}
+  _countDownContainer: {fileID: 439032079}
   _gameOverContainer: {fileID: 0}
   _attemptsText: {fileID: 0}
   _gameOverIN: {fileID: 0}
