@@ -39,6 +39,10 @@ public class UIManager : MonoBehaviour
 
     private List<Image> _initialLifesImages;
 
+    // Dizzy bar
+    [SerializeField] private Image dizzyBar = default;
+    private float currentVelocity;
+
     #endregion
 
     #region inPause
@@ -165,5 +169,14 @@ public class UIManager : MonoBehaviour
     {
         RefreshAttempts(number);
         if (_attemptsIN.state != PlayState.Playing) _attemptsIN.Play();
+    }
+
+    private void Update()
+    {
+        dizzyBar.fillAmount = Mathf.SmoothDamp(
+            dizzyBar.fillAmount,
+            RotateMap.Instance.CurrentRotationCount * 1f / RotateMap.Instance.DizzyCount,
+            ref currentVelocity,
+            0.2f);
     }
 }

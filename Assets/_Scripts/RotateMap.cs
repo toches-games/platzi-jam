@@ -4,7 +4,7 @@ using UnityEngine;
 public class RotateMap : MonoBehaviour
 {
     public static RotateMap Instance;
-    public int CurrentRotationCount { private get; set; }
+    public int CurrentRotationCount { get; set; }
 
     [SerializeField] private float initialRotationSpeed = 1f;
     [SerializeField] private float rotateTime = 5f;
@@ -13,6 +13,14 @@ public class RotateMap : MonoBehaviour
     [SerializeField] private int dizzyRotationCount = 3;
     //[SerializeField] Transform mintPositions = default;
     [SerializeField] private Transform mint = default;
+
+    public int DizzyCount
+    {
+        get
+        {
+            return dizzyRotationCount;
+        }
+    }
 
     private Rigidbody2D rig;
     private float currentSpeed;
