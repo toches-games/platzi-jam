@@ -3124,7 +3124,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _lifesImages.Array.data[0]
       value: 
-      objectReference: {fileID: 637061825}
+      objectReference: {fileID: 224244923}
     - target: {fileID: 3615372984378459143, guid: aac5b7a53ea6c2d4a94ea5669b1c52b0,
         type: 3}
       propertyPath: _lifesImages.Array.data[1]
@@ -3134,7 +3134,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _lifesImages.Array.data[2]
       value: 
-      objectReference: {fileID: 224244923}
+      objectReference: {fileID: 637061825}
     - target: {fileID: 4759449098680973251, guid: aac5b7a53ea6c2d4a94ea5669b1c52b0,
         type: 3}
       propertyPath: m_IsActive
