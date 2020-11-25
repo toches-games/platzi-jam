@@ -83,16 +83,26 @@ public class PlayerController : MonoBehaviour
     {
         if(transform.position.y < -20f)
         {
-            lives--;
-
-            if(lives >= 0)
+            if(lives > 0)
             {
-                rig.velocity = Vector2.zero;
-                transform.position = new Vector2(0, 0);
-                UIManager.SI.LoseLife();
+                lives--;
+
+                // Si queda en cero vidas se quita el ultimo corazón en pantalla
+                if (lives == 0)
+                {
+                    UIManager.SI.LoseLife();
+                }
+
+                else
+                {
+                    rig.velocity = Vector2.zero;
+                    transform.position = new Vector2(0, 0);
+                    UIManager.SI.LoseLife();
+                }
             }
 
-            else if (lives <= 0)
+            // Gameover
+            else
             {
                 GameManager.SI.currentGameState = GameState.GameOver;
             }
