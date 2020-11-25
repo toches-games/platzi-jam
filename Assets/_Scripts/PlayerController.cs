@@ -92,8 +92,9 @@ public class PlayerController : MonoBehaviour
             if (lives == 0)
             {
                 UIManager.SI.LoseLife();
-                SceneManager.LoadScene(0);
+                UIManager.SI.GameOver();
                 SFXManager.SI.PlaySound(Sound.GameOver);
+                GameManager.SI.currentGameState = GameState.GameOver;
             }
 
             else
@@ -102,12 +103,6 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector2(0, 0);
                 UIManager.SI.LoseLife();
             }
-        }
-
-        // Gameover
-        else
-        {
-            GameManager.SI.currentGameState = GameState.GameOver;
         }
     }
 

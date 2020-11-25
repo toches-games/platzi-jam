@@ -114,6 +114,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        _gameOver.SetActive(true);
+    }
+
     private void ActiveLifes()
     {
         for (int i = 0; i < _initialLifesImages.Count; i++)
