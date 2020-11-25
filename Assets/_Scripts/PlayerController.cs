@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckerRadius = 0.5f;
     [SerializeField] private Transform wallChecker = default;
     [SerializeField] private float wallCheckerDistance = 1f;
+    [SerializeField] private int lives = 3;
 
     private Rigidbody2D rig;
     private Animator anim;
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     public bool IsUnestablePlatform { get; private set; }
     public PlayerState State { get; set; }
+    public int Lives { get { return lives; } private set { } }
+
     private void Awake()
     {
         SI = SI == null ? this : SI;
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
         UpdateAnimations();
         CheckWallSliding();
         CheckWalking();
+        CheckLives();
     }
 
     private void FixedUpdate()
@@ -73,6 +77,36 @@ public class PlayerController : MonoBehaviour
         }
         Movement();
         CheckState();
+    }
+
+    private void CheckLives()
+    {
+        if(transform.position.y < -20f)
+        {
+            if(lives > 0)
+            {
+                lives--;
+
+                // Si queda en cero vidas se quita el ultimo corazón en pantalla
+                if (lives == 0)
+                {
+                    UIManager.SI.LoseLife();
+                }
+
+                else
+                {
+                    rig.velocity = Vector2.zero;
+                    transform.position = new Vector2(0, 0);
+                    UIManager.SI.LoseLife();
+                }
+            }
+
+            // Gameover
+            else
+            {
+                GameManager.SI.currentGameState = GameState.GameOver;
+            }
+        }
     }
 
     private void CheckWalking()

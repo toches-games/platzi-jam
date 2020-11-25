@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private List<Image> _lifesImages;
 
-    [SerializeField] private Text _countDownText;
+    [SerializeField] private TextMeshProUGUI _countDownText;
 
     [SerializeField] private GameObject _countDownContainer;
 
@@ -39,6 +40,10 @@ public class UIManager : MonoBehaviour
 
     private List<Image> _initialLifesImages;
 
+    // Dizzy bar
+    [SerializeField] private Image dizzyBar = default;
+    private float currentVelocity;
+
     #endregion
 
     #region inPause
@@ -51,6 +56,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _initialLifesImages = new List<Image>(_lifesImages);
+
+        ShowCountDown(0);
     }
 
     public void ShowPauseMenu()
@@ -82,14 +89,17 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator PlayCountDown(int start)
     {
-        for (int i = start; i > 0; i--)
+        for (int i = start; true; i++)
         {
-            _countDownText.text = i.ToString();
+            if(GameManager.SI.currentGameState == GameState.InGame)
+            {
+                _countDownText.text = TimeSpan.FromSeconds(i).ToString();
+            }
 
             yield return new WaitForSeconds(1f);
         }
 
-        HideCountDown();
+        //HideCountDown();
         //GameManager.SI.ChangeGameState(GameState.InGame);
         //PhaseManager.SI.Pause(false);
     }
@@ -165,5 +175,16 @@ public class UIManager : MonoBehaviour
     {
         RefreshAttempts(number);
         if (_attemptsIN.state != PlayState.Playing) _attemptsIN.Play();
+    }
+
+    private void Update()
+    {
+        if (GameManager.SI.currentGameState != GameState.InGame) return;
+
+        dizzyBar.fillAmount = Mathf.SmoothDamp(
+            dizzyBar.fillAmount,
+            RotateMap.Instance.CurrentRotationCount * 1f / RotateMap.Instance.DizzyCount,
+            ref currentVelocity,
+            0.2f);
     }
 }

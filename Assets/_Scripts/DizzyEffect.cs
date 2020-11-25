@@ -15,9 +15,16 @@ public class DizzyEffect : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.SI.State == PlayerState.Normal) return;
+        if (PlayerController.SI.State == PlayerState.Normal)
+        {
+            targetValue = 0f;
+            volume.weight = Mathf.MoveTowards(volume.weight, targetValue, speed * Time.deltaTime);
+            return;
+        }
 
-        if(volume.weight == 1)
+        if (GameManager.SI.currentGameState == GameState.GameOver) return;
+
+        if (volume.weight == 1)
         {
             targetValue = 0.8f;
         }
