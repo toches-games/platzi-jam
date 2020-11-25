@@ -22,6 +22,8 @@ public class DizzyEffect : MonoBehaviour
             return;
         }
 
+        if (GameManager.SI.currentGameState == GameState.GameOver) return;
+
         if (volume.weight == 1)
         {
             targetValue = 0.8f;
