@@ -179,6 +179,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.SI.currentGameState != GameState.InGame) return;
+
         dizzyBar.fillAmount = Mathf.SmoothDamp(
             dizzyBar.fillAmount,
             RotateMap.Instance.CurrentRotationCount * 1f / RotateMap.Instance.DizzyCount,
