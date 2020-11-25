@@ -32,13 +32,7 @@ public class RotateMap : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        Instance = this;
         rig = GetComponent<Rigidbody2D>();
     }
 
