@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NextRoomController : MonoBehaviour
 {
-    [SerializeField] List<Transform> currentRoom = new List<Transform>();
+    //[SerializeField] List<Transform> currentRooms = new List<Transform>();
     [SerializeField] List<Transform> levels = new List<Transform>();
     [SerializeField] int levelIndex = 0;
 
@@ -16,20 +16,23 @@ public class NextRoomController : MonoBehaviour
 
     public void NextRoom()
     {
-        for (int i = 0; i < currentRoom.Count; i++)
+        for (int i = 0; i < levels[levelIndex].GetChild(0).childCount ; i++)
         {
-            if (currentRoom[i].gameObject.activeInHierarchy)
+
+
+            if (levels[levelIndex].GetChild(0).GetChild(i).gameObject.activeSelf)
             {
-                currentRoom[i].gameObject.SetActive(false);
+                levels[levelIndex].GetChild(0).GetChild(i).gameObject.SetActive(false);
 
-                PlayerController.SI.transform.position = levels[levelIndex]
-                    .GetComponentInChildren<Transform>().GetChild(i).Find("PlayerPosition")
-                    .GetComponent<Transform>().position;
-
-
-                if (i != currentRoom.Count - 1)
+                if (i < levels[levelIndex].GetChild(0).childCount - 1)
                 {
-                    currentRoom[i + 1].gameObject.SetActive(true);
+                    levels[levelIndex].GetChild(0).GetChild(i + 1).gameObject.SetActive(true);
+
+                    PlayerController.SI.transform.position = levels[levelIndex]
+                        .GetChild(0).GetChild(i + 1).Find("PlayerPosition")
+                        .GetComponent<Transform>().position;
+
+                    break;
                 }
                 else
                 {
@@ -43,15 +46,16 @@ public class NextRoomController : MonoBehaviour
     private void NextLevel()
     {
         levelIndex++;
-        currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
-            .GetComponentsInChildren<Transform>().ToList();
+        //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
+        //    .GetComponentsInChildren<Transform>().ToList();
     }
 
     public void InitGame()
     {
         levelIndex = 0;
-        currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
-            .GetComponentsInChildren<Transform>().ToList();
+        //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
+        //    .GetComponentsInChildren<Transform>().ToList();
+
 
     }
 }

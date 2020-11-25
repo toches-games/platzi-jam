@@ -24,12 +24,7 @@ public class RotateMap : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        Instance = Instance == null ? this : Instance;
 
         rig = GetComponent<Rigidbody2D>();
     }
