@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextRoomController : MonoBehaviour
 {
@@ -18,8 +19,6 @@ public class NextRoomController : MonoBehaviour
     {
         for (int i = 0; i < levels[levelIndex].GetChild(0).childCount ; i++)
         {
-
-
             if (levels[levelIndex].GetChild(0).GetChild(i).gameObject.activeSelf)
             {
                 levels[levelIndex].GetChild(0).GetChild(i).gameObject.SetActive(false);
@@ -31,7 +30,7 @@ public class NextRoomController : MonoBehaviour
                     PlayerController.SI.transform.position = levels[levelIndex]
                         .GetChild(0).GetChild(i + 1).Find("PlayerPosition")
                         .GetComponent<Transform>().position;
-
+                    //PlayerController.SI.ResetState();
                     break;
                 }
                 else
@@ -43,9 +42,12 @@ public class NextRoomController : MonoBehaviour
 
     }
 
+
     private void NextLevel()
     {
-        levelIndex++;
+        //levelIndex++;
+
+        SceneManager.LoadScene(0);
         //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
         //    .GetComponentsInChildren<Transform>().ToList();
     }

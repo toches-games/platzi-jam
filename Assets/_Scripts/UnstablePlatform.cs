@@ -125,6 +125,11 @@ public class UnstablePlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             coroutineCheck = StartCoroutine(Check());
@@ -135,6 +140,11 @@ public class UnstablePlatform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
+
         if (collision.collider.CompareTag("Player"))
         {
             StopCoroutine(coroutineCheck);

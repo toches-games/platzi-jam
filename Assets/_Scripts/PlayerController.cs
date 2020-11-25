@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = 10f;
     [SerializeField] private float wallSlidingSpeed = 5f;
     [SerializeField] private LayerMask groundLayer = default;
+    [SerializeField] private LayerMask platformLayer = default;
     [SerializeField] private Transform groundChecker = default;
     [SerializeField] private float groundCheckerRadius = 0.5f;
     [SerializeField] private Transform wallChecker = default;
@@ -58,6 +60,8 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.SI.currentGameState != GameState.InGame)
         {
+            rig.velocity = Vector2.zero;
+
             return;
         }
         CheckInput();
@@ -66,7 +70,6 @@ public class PlayerController : MonoBehaviour
         UpdateAnimations();
         CheckWallSliding();
         CheckWalking();
-        CheckLives();
     }
 
     private void FixedUpdate()
@@ -81,31 +84,29 @@ public class PlayerController : MonoBehaviour
 
     private void CheckLives()
     {
-        if(transform.position.y < -20f)
+        if(lives > 0)
         {
-            if(lives > 0)
+            lives--;
+
+            // Si queda en cero vidas se quita el ultimo corazón en pantalla
+            if (lives == 0)
             {
-                lives--;
-
-                // Si queda en cero vidas se quita el ultimo corazón en pantalla
-                if (lives == 0)
-                {
-                    UIManager.SI.LoseLife();
-                }
-
-                else
-                {
-                    rig.velocity = Vector2.zero;
-                    transform.position = new Vector2(0, 0);
-                    UIManager.SI.LoseLife();
-                }
+                UIManager.SI.LoseLife();
+                SceneManager.LoadScene(0);
             }
 
-            // Gameover
             else
             {
-                GameManager.SI.currentGameState = GameState.GameOver;
+                rig.velocity = Vector2.zero;
+                transform.position = new Vector2(0, 0);
+                UIManager.SI.LoseLife();
             }
+        }
+
+        // Gameover
+        else
+        {
+            GameManager.SI.currentGameState = GameState.GameOver;
         }
     }
 
@@ -145,8 +146,8 @@ public class PlayerController : MonoBehaviour
 
     private void CheckState()
     {
-        isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer);
-        isTouchingWall = Physics2D.Raycast(wallChecker.position, transform.right, wallCheckerDistance, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer | platformLayer);
+        isTouchingWall = Physics2D.Raycast(wallChecker.position, transform.right, wallCheckerDistance, platformLayer);
 
         //IsUnestablePlatform = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, groundLayer)
                     //.CompareTag("UnestablePlatform");
@@ -160,7 +161,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (jumpInput && isGrounded)
+        if (jumpInput && isGrounded )
         {
             rig.velocity = new Vector2(rig.velocity.x, jumpSpeed);
         }
@@ -168,9 +169,10 @@ public class PlayerController : MonoBehaviour
         else if(jumpInput && isWallSliding)
         {
             //if(isFacingRight && movementDirection < 0 || !isFacingRight && movementDirection > 0)
-            {
-                rig.velocity = new Vector2(movementDirection, 1f) * jumpSpeed;
-            }
+            
+            rig.velocity = new Vector2(movementDirection, 1f) * jumpSpeed;
+
+            
         }
     }
 
@@ -234,6 +236,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
+
         if (collision.CompareTag("Mint"))
         {
             collision.gameObject.SetActive(false);
@@ -245,9 +252,14 @@ public class PlayerController : MonoBehaviour
         {
             GameObject.Find("TimeLineNextRoom").GetComponent<PlayableDirector>().Play();
         }
+
+        if (collision.CompareTag("DeadZone"))
+        {
+            CheckLives();
+        }
     }
 
-    private void ResetState()
+    public void ResetState()
     {
         State = PlayerState.Normal;
         RotateMap.Instance.CurrentRotationCount = 0;

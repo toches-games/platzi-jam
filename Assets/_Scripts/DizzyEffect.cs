@@ -15,6 +15,11 @@ public class DizzyEffect : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
+
         if (PlayerController.SI.State == PlayerState.Normal)
         {
             targetValue = 0f;

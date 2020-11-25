@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (currentGameState != GameState.InGame)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ChangeGameState(GameState.MainMenu);

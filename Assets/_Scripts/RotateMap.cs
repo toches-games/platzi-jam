@@ -37,6 +37,11 @@ public class RotateMap : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
     }
 
+    //private void OnEnable()
+    //{
+    //    CurrentRotationCount = 0;
+    //}
+
     private IEnumerator Start()
     {
         while (true)

@@ -47,7 +47,12 @@ public class SoftBody2D : MonoBehaviour
 
     private void Update()
     {
-        for(int i=0; i<vertices.Length; i++)
+        if (GameManager.SI.currentGameState != GameState.InGame)
+        {
+            return;
+        }
+
+        for (int i=0; i<vertices.Length; i++)
         {
             vertices[i] = points[i].transform.localPosition;
         }
