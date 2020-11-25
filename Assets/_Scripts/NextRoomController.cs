@@ -45,8 +45,8 @@ public class NextRoomController : MonoBehaviour
 
     private void NextLevel()
     {
+        AudioManager.Instance.PlayNewTrack(2);
         //levelIndex++;
-
         SceneManager.LoadScene(0);
         //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
         //    .GetComponentsInChildren<Transform>().ToList();

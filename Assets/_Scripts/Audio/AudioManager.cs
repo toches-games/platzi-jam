@@ -40,14 +40,14 @@ public class AudioManager : MonoBehaviour
 
         if(PlayerController.SI.State == PlayerState.Normal)
         {
-            audioTracks[1].pitch = 1f;
-            audioTracks[1].volume = 1f;
+            audioTracks[2].pitch = 1f;
+            audioTracks[2].volume = 1f;
         }
 
         else if(PlayerController.SI.State == PlayerState.Dizzy)
         {
-            audioTracks[1].pitch = 0.8f;
-            audioTracks[1].volume = 0.4f;
+            audioTracks[2].pitch = 0.8f;
+            audioTracks[2].volume = 0.4f;
         }
     }
 
