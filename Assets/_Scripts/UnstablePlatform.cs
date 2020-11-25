@@ -36,6 +36,7 @@ public class UnstablePlatform : MonoBehaviour
     {
         //Debug.Log(newState);
         currentState = (PlatformState)newState;
+        SFXManager.SI.PlaySound(Sound.PlatformHit1);
 
         switch (currentState)
         {
@@ -64,6 +65,7 @@ public class UnstablePlatform : MonoBehaviour
 
                 GetComponent<BoxCollider2D>().enabled = false;
                 StartCoroutine(Dead());
+                SFXManager.SI.PlaySound(Sound.FallGround);
                 break;
             default:
                 break;

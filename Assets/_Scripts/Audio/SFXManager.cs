@@ -2,16 +2,25 @@
 
 public enum Sound
 {
-    deslizar,
-    Jump,
-    ObjectHit,
-    Checkpoint,
+    /*deslizar,
     MeteoritoExplosion,
     MeteoritoTransicion,
-    Fall,
     AlienComming,
     AlienExit,
-    AlienStay
+    AlienStay*/
+
+    Jump,
+    FallDeath,
+    FallGround,
+    Dizzy,
+    ObjectHit,
+    MapChange,
+    NextLevel,
+    MapTurn,
+    PlatformHit1,
+    PlatformHit2,
+    PlatformHit3,
+    GameOver
 }
 
 public class SFXManager : MonoBehaviour
@@ -24,41 +33,44 @@ public class SFXManager : MonoBehaviour
     }
 
     //Referencias a los audios source respectivos
-    [SerializeField] private AudioSource deslizar, salto, choqueObjeto, checkpoint, meteoritoExplosion, meteoritoTransicion, caer, ovniLlegada, ovniSalida, ovniDetenido;
+    [SerializeField] private AudioSource jump, fallDeath, fallGround, dizzy, objectHit, mapChange, nextLevel, mapTurn, platformHit1, gameOver;
 
     public void PlaySound(Sound soundToPlay)
     {
         switch (soundToPlay)
         {
-            case Sound.deslizar:
+            /*case Sound.Jump:
                 if(!deslizar.isPlaying) deslizar.PlayOneShot(deslizar.clip);
-                break;
+                break;*/
             case Sound.Jump:
-                salto.PlayOneShot(salto.clip);
+                jump.PlayOneShot(jump.clip);
+                break;
+            case Sound.FallDeath:
+                fallDeath.PlayOneShot(fallDeath.clip);
+                break;
+            case Sound.FallGround:
+                fallGround.PlayOneShot(fallGround.clip);
+                break;
+            case Sound.Dizzy:
+                if (!dizzy.isPlaying) dizzy.PlayOneShot(dizzy.clip);
                 break;
             case Sound.ObjectHit:
-                choqueObjeto.PlayOneShot(choqueObjeto.clip);
+                if (!objectHit.isPlaying) objectHit.PlayOneShot(objectHit.clip);
                 break;
-            case Sound.AlienComming:
-                ovniLlegada.PlayOneShot(ovniLlegada.clip);
+            case Sound.MapChange:
+                mapChange.Play();
                 break;
-            case Sound.Checkpoint:
-                checkpoint.PlayOneShot(checkpoint.clip);
+            case Sound.NextLevel:
+                nextLevel.PlayOneShot(nextLevel.clip);
                 break;
-            case Sound.MeteoritoExplosion:
-                if (!meteoritoExplosion.isPlaying) meteoritoExplosion.PlayOneShot(meteoritoExplosion.clip);
+            case Sound.MapTurn:
+                mapTurn.PlayOneShot(mapTurn.clip);
                 break;
-            case Sound.MeteoritoTransicion:
-                meteoritoTransicion.Play();
+            case Sound.PlatformHit1:
+                if(!platformHit1.isPlaying) platformHit1.PlayOneShot(platformHit1.clip);
                 break;
-            case Sound.Fall:
-                caer.PlayOneShot(caer.clip);
-                break;
-            case Sound.AlienExit:
-                ovniSalida.PlayOneShot(ovniSalida.clip);
-                break;
-            case Sound.AlienStay:
-                ovniDetenido.PlayOneShot(ovniDetenido.clip);
+            case Sound.GameOver:
+                gameOver.PlayOneShot(gameOver.clip);
                 break;
         }
     }
@@ -67,9 +79,9 @@ public class SFXManager : MonoBehaviour
     {
         switch (soundToPlay)
         {
-            case Sound.MeteoritoTransicion:
+            /*case Sound.MeteoritoTransicion:
                 meteoritoTransicion.Stop();
-                break;
+                break;*/
             
         }
     }

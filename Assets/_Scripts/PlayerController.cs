@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
             {
                 UIManager.SI.LoseLife();
                 SceneManager.LoadScene(0);
+                SFXManager.SI.PlaySound(Sound.GameOver);
             }
 
             else
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour
         if (jumpInput && isGrounded )
         {
             rig.velocity = new Vector2(rig.velocity.x, jumpSpeed);
+            SFXManager.SI.PlaySound(Sound.Jump);
         }
 
         else if(jumpInput && isWallSliding)
@@ -171,8 +173,7 @@ public class PlayerController : MonoBehaviour
             //if(isFacingRight && movementDirection < 0 || !isFacingRight && movementDirection > 0)
             
             rig.velocity = new Vector2(movementDirection, 1f) * jumpSpeed;
-
-            
+            SFXManager.SI.PlaySound(Sound.Jump);
         }
     }
 
@@ -224,7 +225,7 @@ public class PlayerController : MonoBehaviour
     private void CheckInput()
     {
         movementDirection = Input.GetAxisRaw("Horizontal");
-        jumpInput = Input.GetButtonDown("Jump") || Input.GetKey(KeyCode.UpArrow);
+        jumpInput = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow);
 
         if (State == PlayerState.Dizzy)
         {
@@ -244,6 +245,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Mint"))
         {
             collision.gameObject.SetActive(false);
+            SFXManager.SI.PlaySound(Sound.ObjectHit);
 
             ResetState();
         }
@@ -251,11 +253,13 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("NextRoom"))
         {
             GameObject.Find("TimeLineNextRoom").GetComponent<PlayableDirector>().Play();
+            SFXManager.SI.PlaySound(Sound.NextLevel);
         }
 
         if (collision.CompareTag("DeadZone"))
         {
             CheckLives();
+            SFXManager.SI.PlaySound(Sound.FallDeath);
         }
     }
 

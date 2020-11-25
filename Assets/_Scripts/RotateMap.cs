@@ -56,6 +56,7 @@ public class RotateMap : MonoBehaviour
                 direction = directions[Random.Range(0, directions.Length)];
             }
             targetSpeed = (rig.rotation + rotationDegrees - rig.rotation) * rotateDurationTime * direction;
+            SFXManager.SI.PlaySound(Sound.MapTurn);
             yield return new WaitForSeconds(rotateDurationTime);
 
             if(PlayerController.SI.State == PlayerState.Normal)

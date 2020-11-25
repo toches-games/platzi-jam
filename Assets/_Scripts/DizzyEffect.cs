@@ -40,5 +40,6 @@ public class DizzyEffect : MonoBehaviour
         }
 
         volume.weight = Mathf.MoveTowards(volume.weight, targetValue, speed * Time.deltaTime);
+        SFXManager.SI.PlaySound(Sound.Dizzy);
     }
 }
