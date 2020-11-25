@@ -91,7 +91,10 @@ public class UIManager : MonoBehaviour
     {
         for (int i = start; true; i++)
         {
-            _countDownText.text = TimeSpan.FromSeconds(i).ToString();
+            if(GameManager.SI.currentGameState == GameState.InGame)
+            {
+                _countDownText.text = TimeSpan.FromSeconds(i).ToString();
+            }
 
             yield return new WaitForSeconds(1f);
         }
