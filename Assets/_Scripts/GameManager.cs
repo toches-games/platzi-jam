@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public static GameManager SI;
     public GameState currentGameState = GameState.MainMenu;
 
+    public static int sceneReset = 0;
+
     private void Awake()
     {
         SI = SI == null ? this : SI;
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+      
+        sceneReset = PlayerPrefs.GetInt("TutorialRealizado");
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -56,7 +61,7 @@ public class GameManager : MonoBehaviour
 
         if (newGameState == GameState.Win)
         {
-            UIManager.SI.PlayTimeLineWin();
+            UIManager.SI.ShowWin();
         }
 
         if(newGameState == GameState.MainMenu)
@@ -67,8 +72,12 @@ public class GameManager : MonoBehaviour
         currentGameState = newGameState;
     }
 
-    public void GameReload()
+    public void StartChronometer()
     {
-        //SceneManager.LoadScene(0);
+        if(SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
+        {
+            UIManager.SI.ShowCountDown(0);
+        }
     }
+
 }

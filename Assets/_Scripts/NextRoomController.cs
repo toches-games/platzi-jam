@@ -54,22 +54,26 @@ public class NextRoomController : MonoBehaviour
     private void NextLevel()
     {
         levelIndex++;
-        levelActive = false;
-        PlayerController.SI.transform.position = levels[levelIndex]
-                        .GetChild(0).GetChild(0).Find("PlayerPosition")
-                        .GetComponent<Transform>().position;
-        PlayerController.SI.ResetState();
+        if(levelIndex < levels.Count)
+        {
+            levelActive = false;
+            PlayerController.SI.transform.position = levels[levelIndex]
+                            .GetChild(0).GetChild(0).Find("PlayerPosition")
+                            .GetComponent<Transform>().position;
+            PlayerController.SI.ResetState();
 
-        NextRoom();
-        StopCoroutine(UIManager.SI.coroutine);
-        UIManager.SI.ResetChoronometer();
-        UIManager.SI.ShowCountDown(0);
+            NextRoom();
+            StopCoroutine(UIManager.SI.coroutine);
+            UIManager.SI.ResetChoronometer();
+            UIManager.SI.ShowCountDown(0);
+            AudioManager.Instance.PlayNewTrack(2);
+        }
+        else
+        {
+            GameManager.SI.ChangeGameState(GameState.Win);
 
-        AudioManager.Instance.PlayNewTrack(2);
-        //levelIndex++;
-        
-        //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
-        //    .GetComponentsInChildren<Transform>().ToList();
+        }
+
     }
 
     public void InitGame()

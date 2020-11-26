@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverContainer;
 
+    [SerializeField] private GameObject _winContainer;
+
     [SerializeField] private Text _attemptsText;
 
     [SerializeField] private PlayableDirector _gameOverIN;
@@ -138,7 +140,7 @@ public class UIManager : MonoBehaviour
     {
         if (escene)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(GameManager.sceneReset);
         }
         else
         {
@@ -170,6 +172,11 @@ public class UIManager : MonoBehaviour
         }
 
         //GameManager.SI.ChangeGameState(GameState.InGame);
+    }
+
+    public void ShowWin()
+    {
+        _winContainer.SetActive(true);
     }
 
     public void PlayTimeLineWin()

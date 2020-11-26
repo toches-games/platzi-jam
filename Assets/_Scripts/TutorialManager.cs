@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] private GameObject goalHab1;
     [SerializeField] private GameObject goalHab4;
+    [SerializeField] private GameObject goalHab3;
     [SerializeField] private PlayableDirector nextRoom;
     [SerializeField] private GameObject chronometerHUD;
     [SerializeField] private GameObject livesHUD;
@@ -107,7 +108,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     //Platf fija
                     popUpIndex++;
-                    waitTime = 5;
+                    waitTime = 4;
                 }
                 else
                 {
@@ -119,7 +120,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     //Platf inestable
                     popUpIndex++;
-                    waitTime = 5;
+                    waitTime = 4;
 
                     livesHUD.SetActive(true);
 
@@ -135,7 +136,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     //Muerte
                     popUpIndex++;
-                    waitTime = 5;
+                    waitTime = 4;
 
                     chronometerHUD.SetActive(true);
                     UIManager.SI.ShowCountDown(0);
@@ -152,7 +153,7 @@ public class TutorialManager : MonoBehaviour
                 {
                 
                     popUpIndex++;
-                    waitTime = 5;
+                    waitTime = 4;
                 }
                 else
                 {
@@ -172,7 +173,7 @@ public class TutorialManager : MonoBehaviour
                 {
                 
                     popUpIndex++;
-                    waitTime = 5;
+                    waitTime = 4;
                 }
                 else
                 {
@@ -186,7 +187,7 @@ public class TutorialManager : MonoBehaviour
                 {
 
                     popUpIndex++;
-                    waitTime = 5;
+                    waitTime = 4;
                 }
                 else
                 {
@@ -196,7 +197,7 @@ public class TutorialManager : MonoBehaviour
             else if (popUpIndex == 11)
             {
                 //PopUp Ve a la siguiente habitacion
-
+                goalHab3.SetActive(true);
                 yield return new WaitUntil(() => nextRoom.time > 0.3);
                 popUpIndex++;
             }
@@ -256,7 +257,10 @@ public class TutorialManager : MonoBehaviour
 
                 yield return new WaitUntil(() => nextRoom.time > 0.3);
 
-                popUps[popUpIndex].SetActive(false);
+                popUps[popUps.Count-1].SetActive(false);
+
+                PlayerPrefs.SetInt("TutorialRealizado", 1);
+                PlayerPrefs.Save();
 
                 yield break;
                
