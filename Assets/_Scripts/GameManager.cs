@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         currentGameState = GameState.InGame;
+        AudioManager.Instance.PlayNewTrack(1);
     }
 
     public void ChangeGameState(GameState newGameState)
@@ -56,6 +57,11 @@ public class GameManager : MonoBehaviour
         if (newGameState == GameState.Win)
         {
             UIManager.SI.PlayTimeLineWin();
+        }
+
+        if(newGameState == GameState.MainMenu)
+        {
+            AudioManager.Instance.PlayNewTrack(0);
         }
 
         currentGameState = newGameState;

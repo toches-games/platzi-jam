@@ -65,6 +65,9 @@ public class NextRoomController : MonoBehaviour
         UIManager.SI.ResetChoronometer();
         UIManager.SI.ShowCountDown(0);
 
+        AudioManager.Instance.PlayNewTrack(2);
+        //levelIndex++;
+        
         //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
         //    .GetComponentsInChildren<Transform>().ToList();
     }
