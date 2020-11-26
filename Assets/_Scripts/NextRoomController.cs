@@ -10,6 +10,8 @@ public class NextRoomController : MonoBehaviour
     [SerializeField] List<Transform> levels = new List<Transform>();
     [SerializeField] int levelIndex = 0;
 
+    bool levelActive = false;
+
     private void Start()
     {
         InitGame();
@@ -30,24 +32,39 @@ public class NextRoomController : MonoBehaviour
                     PlayerController.SI.transform.position = levels[levelIndex]
                         .GetChild(0).GetChild(i + 1).Find("PlayerPosition")
                         .GetComponent<Transform>().position;
-                    //PlayerController.SI.ResetState();
+                    PlayerController.SI.ResetState();
+                    levelActive = true;
                     break;
                 }
                 else
                 {
                     NextLevel();
                 }
+                
             }
         }
 
+        if (!levelActive)
+        {
+            levels[levelIndex].GetChild(0).GetChild(0).gameObject.SetActive(true);
+        }
     }
 
 
     private void NextLevel()
     {
-        //levelIndex++;
+        levelIndex++;
+        levelActive = false;
+        PlayerController.SI.transform.position = levels[levelIndex]
+                        .GetChild(0).GetChild(0).Find("PlayerPosition")
+                        .GetComponent<Transform>().position;
+        PlayerController.SI.ResetState();
 
-        SceneManager.LoadScene(0);
+        NextRoom();
+        StopCoroutine(UIManager.SI.coroutine);
+        UIManager.SI.ResetChoronometer();
+        UIManager.SI.ShowCountDown(0);
+
         //currentRoom = levels[levelIndex].GetComponentInChildren<Transform>()
         //    .GetComponentsInChildren<Transform>().ToList();
     }

@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
 
     private List<Image> _initialLifesImages;
 
+    public Coroutine coroutine;
+
     // Dizzy bar
     [SerializeField] private Image dizzyBar = default;
     private float currentVelocity;
@@ -57,7 +59,6 @@ public class UIManager : MonoBehaviour
     {
         _initialLifesImages = new List<Image>(_lifesImages);
 
-        ShowCountDown(0);
     }
 
     public void ShowPauseMenu()
@@ -77,9 +78,9 @@ public class UIManager : MonoBehaviour
 
     public void ShowCountDown(int start)
     {
-        _countDownContainer.SetActive(true);
+        //_countDownContainer.SetActive(true);
 
-        StartCoroutine(PlayCountDown(start));
+        coroutine = StartCoroutine(PlayCountDown(start));
     }
 
     private void HideCountDown()
@@ -102,6 +103,11 @@ public class UIManager : MonoBehaviour
         //HideCountDown();
         //GameManager.SI.ChangeGameState(GameState.InGame);
         //PhaseManager.SI.Pause(false);
+    }
+
+    public void ResetChoronometer()
+    {
+        _countDownText.text = "0";
     }
 
     public void LoseLife()

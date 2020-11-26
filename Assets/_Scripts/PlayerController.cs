@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController SI;
 
     [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float jumpSpeed = 5f;
+    [SerializeField] public float jumpSpeed;
     [SerializeField] private float gravity = 10f;
     [SerializeField] private float wallSlidingSpeed = 5f;
     [SerializeField] private LayerMask groundLayer = default;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private float movementDirection;
     private bool isFacingRight = true;
-    private bool jumpInput;
+    public bool jumpInput;
     private float currentSpeed;
     // for smoothdamp
     private float currentVelocity;
@@ -246,6 +246,9 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
 
             ResetState();
+
+
+            TutorialManager.SI.popUpIndex++;
         }
 
         if (collision.CompareTag("NextRoom"))
